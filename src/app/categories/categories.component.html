@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 bg-gray p-5 shadow-effect">
+      <h3 class="text-center text-theme-primary">
+        {{ formStatus }} Categories
+      </h3>
+      <p class="text-center mb-5">You can add new categories from here!!</p>
+      <form
+        #f="ngForm"
+        (ngSubmit)="onSubmit(f)"
+        class="form-inline text-center"
+      >
+        <div class="form-group col-md-10">
+          <input
+            type="text"
+            class="form-control shadow-effect"
+            name="category"
+            [(ngModel)]="formCategory"
+            #category="ngModel"
+            placeholder="Add new categories"
+            [ngClass]="{ 'is-invalid': category.touched && category.invalid }"
+            required
+          />
+          <div *ngIf="category.errors?.['required']">
+            <div
+              class="alert alert-danger"
+              *ngIf="category.touched && category.invalid"
+            >
+              Fill in the blanks
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <button
+            type="submit"
+            [disabled]="f.invalid"
+            class="btn btn-block btn-theme btn-info mb-2"
+          >
+            {{ formStatus }} Category
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row mt-5 mb-5">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="card shadow-effect">
+        <table class="table row-border hover">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Category</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let x of data; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ x.data.category }}</td>
+              <td>{{ x.data.status }}</td>
+              <td>
+                <button
+                  class="btn btn-sm btn-warning"
+                  (click)="onUpdate(x.id, x.data.category)"
+                >
+                  Edit
+                </button>
+                |
+                <button class="btn btn-sm btn-danger" (click)="onDelete(x.id)">
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
