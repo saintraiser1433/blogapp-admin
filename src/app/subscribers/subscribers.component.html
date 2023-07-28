@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="col-md-12">
+    <div class="card shadow-effect">
+      <table class="table row-border hover">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let x of data; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ x.data.names }}</td>
+            <td>{{ x.data.email }}</td>
+            <td>
+              <button (click)="onDelete(x.id)" class="btn btn-danger btn-sm-2">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

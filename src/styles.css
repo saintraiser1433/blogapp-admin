@@ -11,7 +11,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  font-size: 124x;
+  font-size: 12px;
   color: var(--body-text-color);
   display: contents;
 }
@@ -45,7 +45,7 @@ body {
   color: var(--primary-color);
 }
 
-input[type='text'], input[input='email'] {
+input[type='text'], input[input='email'], input[input='password'] {
   height: 60px;
   padding-left: 20px;
   width: 100% !important;

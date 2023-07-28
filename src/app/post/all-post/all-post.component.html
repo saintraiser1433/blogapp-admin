@@ -15,4 +15,65 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card shadow-effect">
+        <div class="card-body">
+          <table class="table row-border hover">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Post Image</th>
+                <th>Title</th>
+                <!-- <th>Excerpt</th> -->
+                <th>Category</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let x of data; let i = index">
+                <td width="10">{{ i + 1 }}</td>
+                <td width="200">
+                  <img src="{{ x.data.postImgPath }}" class="img img-fluid" />
+                </td>
+                <td width="200">{{ x.data.title }}</td>
+                <td>{{ x.data.category.category }}</td>
+                <td>{{ x.data.createdAt.toMillis() | date }}</td>
+                <td>
+                  <button
+                    class="btn btn-sm btn-warning"
+                    routerLink="/post/new"
+                    [queryParams]="{ id: x.id }"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    class="btn btn-sm btn-danger ml-2"
+                    (click)="onDelete(x.data.postImgPath, x.id)"
+                  >
+                    Delete
+                  </button>
+                  <button
+                    *ngIf="!x.data.isFeatured"
+                    class="btn btn-sm btn-success ml-2"
+                    (click)="onFeatured(true, x.id)"
+                  >
+                    Mark Featured
+                  </button>
+                  <button
+                    *ngIf="x.data.isFeatured"
+                    class="btn btn-sm btn-info ml-2"
+                    (click)="onFeatured(false, x.id)"
+                  >
+                    Remove Featured
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

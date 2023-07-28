@@ -17,6 +17,12 @@ import { NewPostComponent } from './post/new-post/new-post.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { LoginComponent } from './auth/login/login.component';
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { SubscribersComponent } from './subscribers/subscribers.component';
+import { TestComponent } from './test/test/test.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,19 +31,25 @@ import { ReactiveFormsModule } from '@angular/forms';
     DashboardComponent,
     CategoriesComponent,
     AllPostComponent,
-    NewPostComponent
+    NewPostComponent,
+    LoginComponent,
+    SubscribersComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    AngularFireStorageModule,
     FormsModule,
     BrowserAnimationsModule,
     AngularEditorModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot()
+    AngularFireAuthModule,
+    ToastrModule.forRoot(),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

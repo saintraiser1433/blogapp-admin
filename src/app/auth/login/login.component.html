@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="card p-5 shadow-effect bg-secondary-theme">
+        <div class="card-body">
+          <div class="text-center">
+            <h3 class="text-theme-primary">Login</h3>
+            <p>Please login to your admin account to post</p>
+          </div>
+          <form #forms="ngForm" (ngSubmit)="onSubmit(forms.value)">
+            <div class="form-group">
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Email"
+                name="email"
+                #email="ngModel"
+                [ngClass]="{ 'is-invalid': email.touched && email.invalid }"
+                ngModel
+                email
+                required
+              />
+              <div
+                class="alert alert-danger"
+                *ngIf="email.touched && email.invalid"
+              >
+                <div *ngIf="email.errors?.['required']">Email is required</div>
+                <div *ngIf="email.errors?.['email']">
+                  Please enter valid email address
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Password"
+                #password="ngModel"
+                [ngClass]="{
+                  'is-invalid': password.touched && password.invalid
+                }"
+                name="password"
+                ngModel
+                required
+              />
+            </div>
+            <div
+              class="alert alert-danger"
+              *ngIf="password.touched && password.invalid"
+            >
+              <div *ngIf="password.errors?.['required']">
+                Password is required
+              </div>
+            </div>
+            <button
+              class="btn btn-info btn-block btn-theme"
+              [disabled]="forms.invalid"
+            >
+              Login
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
